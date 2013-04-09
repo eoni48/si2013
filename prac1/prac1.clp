@@ -24,6 +24,7 @@
     (slot fuente)
     (slot hdd)
     (slot marca)
+    (slot precio)
     )
 (deffacts inicio
     (user(nombre pepito)(dinero 3000)(so win)(portatil no)(potencia alta)(renovable no)(jugar si))
@@ -31,6 +32,9 @@
     (user(nombre gepeto)(dinero 700)(so win)(portatil no)(potencia media)(renovable si)(jugar si))
     (user(nombre koyi)(dinero 6000)(so win)(portatil si)(potencia alta)(renovable si)(jugar si))
     (user(nombre dolar)(dinero 6000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
+    
+    (equipo (precio 0))
+    
     
     ;amd
     (componente(marca asus)(nombre croshair)(precio 220)(tipo placa) (conexion am3p) (memoria 32))
@@ -77,5 +81,7 @@
     (componente(marca intel)(nombre ssd)(precio 195)(tipo hdd) (conexion sata) (memoria 240))
     (componente(marca intel)(nombre ssd)(precio 444)(tipo hdd) (conexion sata) (memoria 300))
     
+    
+    ;tabla componente-nombre
   
     )
