@@ -1,7 +1,7 @@
+
 (deftemplate user
     (slot nombre)
-    (slot tipo)
-    (slot dinero)
+    (slot dinero(type NUMBER))
     (slot so)
     (slot portatil)
     (slot potencia)
@@ -17,28 +17,26 @@
     (slot memoria)
     )
 (deftemplate equipo
-    (slot procesador)
-    (slot placa)
-    (slot grafica)
-    (slot ram)
-    (slot fuente)
-    (slot hdd)
-    (slot marca)
-    (slot precio)
+    (slot procesador (default empty))
+    (slot placa (default empty))
+    (slot grafica (default empty))
+    (slot ram (default empty))
+    (slot fuente (default empty))
+    (slot hdd (default empty))
+    (slot marca (default empty))
+    (slot precio (type NUMBER)(default 0))
     )
 (deffacts inicio
     (user(nombre pepito)(dinero 3000)(so win)(portatil no)(potencia alta)(renovable no)(jugar si))
-    (user(nombre grillo)(dinero 1000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
-    (user(nombre gepeto)(dinero 700)(so win)(portatil no)(potencia media)(renovable si)(jugar si))
-    (user(nombre koyi)(dinero 6000)(so win)(portatil si)(potencia alta)(renovable si)(jugar si))
-    (user(nombre dolar)(dinero 6000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
-    
-    (equipo (precio 0))
-    
-    
+    ;(user(nombre grillo)(dinero 1000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
+    ;(user(nombre gepeto)(dinero 700)(so win)(portatil no)(potencia media)(renovable si)(jugar si))
+    ;(user(nombre koyi)(dinero 6000)(so win)(portatil si)(potencia alta)(renovable si)(jugar si))
+    ;(user(nombre dolar)(dinero 6000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
+   	(equipo)
     ;amd
-    (componente(marca asus)(nombre croshair)(precio 220)(tipo placa) (conexion am3p) (memoria 32))
     (componente(marca asus)(nombre sabertooth)(precio 168)(tipo placa) (conexion am3p) (memoria 32))
+    (componente(marca asus)(nombre croshair)(precio 220)(tipo placa) (conexion am3p) (memoria 32))
+    
     
 	(componente(marca amd)(nombre 8120)(precio 152)(tipo cpu) (conexion amd3p) (memoria 64))
 	(componente(marca amd)(nombre 8350)(precio 183)(tipo cpu) (conexion amd3p) (memoria 64))
@@ -49,7 +47,7 @@
 	(componente(marca gigabyte)(nombre gax79)(precio 270)(tipo placa) (conexion 2011) )
     
     (componente(marca intel)(nombre i7-3820)(precio 290)(tipo cpu) (conexion 2011) )
-     (componente(marca intel)(nombre i7-3930)(precio 540)(tipo cpu) (conexion 2011) )
+    (componente(marca intel)(nombre i7-3930)(precio 540)(tipo cpu) (conexion 2011) )
     (componente(marca intel)(nombre i7-3970x)(precio 1050)(tipo cpu) (conexion 2011) )
     
     ;gpu
@@ -81,7 +79,46 @@
     (componente(marca intel)(nombre ssd)(precio 195)(tipo hdd) (conexion sata) (memoria 240))
     (componente(marca intel)(nombre ssd)(precio 444)(tipo hdd) (conexion sata) (memoria 300))
     
-    
     ;tabla componente-nombre
+   
   
     )
+
+;reglas
+
+
+
+(defrule add-placa
+    (componente
+        (marca ?)
+        (nombre ?nom)
+        (precio ?precio)
+        (tipo placa)
+        (conexion ?conexion)
+        (memoria ?mem))    
+    ?p1 <- (equipo 
+        (precio ?acum)
+        (placa ?hay&:(eq ?hay empty))
+        (fuente ?)
+        (grafica ?)
+        (hdd ?)
+        (procesador ?)
+        (ram ?)
+        (marca ?))
+    (user 
+        (dinero ?pres&:(>= ?pres (+ ?precio  ?acum)))
+        (jugar ?)
+        (nombre ?)
+        (portatil ?)
+        (potencia ?)
+        (renovable ?)
+        (so ?)
+     )
+        =>
+    (printout t "No se ha podido encontrar una solucion para su problema, vaya al medico" crlf)
+    (modify ?p1 (placa ?nom)(precio (+ ?acum  ?precio)))
+    )
+
+(reset)
+(run)
+(facts)
