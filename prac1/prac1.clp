@@ -63,10 +63,10 @@
     (componente(marca nvidia)(nombre nvidia-650)(precio 147)(tipo gpu) (conexion pcie3) )
     
     ;ram
-    (componente(marca kingston)(nombre hyperx)(precio 133)(tipo ram) (conexion ddr3) (memoria 16))
-    (componente(marca kingston)(nombre hyperx)(precio 295)(tipo ram) (conexion ddr3) (memoria 32))
-    (componente(marca kingston)(nombre value)(precio 115)(tipo ram) (conexion ddr3) (memoria 12))
-    (componente(marca kingston)(nombre hyperx)(precio 62)(tipo ram) (conexion ddr3) (memoria 8))
+    (componente(marca kingston)(nombre hyperx-16)(precio 133)(tipo ram) (conexion ddr3) (memoria 16))
+    (componente(marca kingston)(nombre hyperx-32)(precio 295)(tipo ram) (conexion ddr3) (memoria 32))
+    (componente(marca kingston)(nombre value-12)(precio 115)(tipo ram) (conexion ddr3) (memoria 12))
+    (componente(marca kingston)(nombre hyperx-8)(precio 62)(tipo ram) (conexion ddr3) (memoria 8))
     
     ;fuente
     (componente(marca thermaltake)(nombre tp)(precio 248)(tipo fuente))
