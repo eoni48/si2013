@@ -27,19 +27,19 @@
     (slot precio (type NUMBER)(default 0))
     )
 (deffacts inicio
-    (user(nombre pepito)(dinero 3000)(so win)(portatil no)(potencia alta)(renovable no)(jugar si))
-    ;(user(nombre grillo)(dinero 1000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
+    ;(user(nombre pepito)(dinero 3000)(so win)(portatil no)(potencia alta)(renovable no)(jugar si))
+    (user(nombre grillo)(dinero 700)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
     ;(user(nombre gepeto)(dinero 700)(so win)(portatil no)(potencia media)(renovable si)(jugar si))
     ;(user(nombre koyi)(dinero 6000)(so win)(portatil si)(potencia alta)(renovable si)(jugar si))
     ;(user(nombre dolar)(dinero 6000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
-   	(equipo)
+   	
     ;amd
-    (componente(marca asus)(nombre sabertooth)(precio 168)(tipo placa) (conexion am3p) (memoria 32))
-    (componente(marca asus)(nombre croshair)(precio 220)(tipo placa) (conexion am3p) (memoria 32))
+    (componente(marca asus)(nombre sabertooth)(precio 168)(tipo placa) (conexion amd3p) (memoria 32))
+    (componente(marca asus)(nombre croshair)(precio 220)(tipo placa) (conexion amd3p) (memoria 32))
     
     
-	(componente(marca amd)(nombre 8120)(precio 152)(tipo cpu) (conexion amd3p) (memoria 64))
-	(componente(marca amd)(nombre 8350)(precio 183)(tipo cpu) (conexion amd3p) (memoria 64))
+	(componente(marca amd)(nombre 8120)(precio 152)(tipo cpu) (conexion amd3p) )
+	(componente(marca amd)(nombre 8350)(precio 183)(tipo cpu) (conexion amd3p) )
     
     
     ;intel
@@ -73,40 +73,64 @@
     (componente(marca thermaltake)(nombre smart)(precio 97)(tipo fuente))
     
     ;hdd
-    (componente(marca seagate)(nombre barracuda)(precio 49)(tipo hdd) (conexion sata) (memoria 500))
-    (componente(marca seagate)(nombre barracuda)(precio 87)(tipo hdd) (conexion sata) (memoria 1))
+    (componente(marca seagate)(nombre barracuda-500)(precio 49)(tipo hdd) (conexion sata) (memoria 500))
+    (componente(marca seagate)(nombre barracuda-1000)(precio 87)(tipo hdd) (conexion sata) (memoria 1000))
     
     (componente(marca intel)(nombre ssd)(precio 195)(tipo hdd) (conexion sata) (memoria 240))
     (componente(marca intel)(nombre ssd)(precio 444)(tipo hdd) (conexion sata) (memoria 300))
     
     ;tabla componente-nombre
-   
-  
+
     )
 
 ;reglas
 
-
-
 (defrule add-placa
     (componente
         (marca ?)
-        (nombre ?nom)
-        (precio ?precio)
+        (nombre ?nom_placa)
+        (precio ?precio_placa)
         (tipo placa)
-        (conexion ?conexion)
-        (memoria ?mem))    
-    ?p1 <- (equipo 
-        (precio ?acum)
-        (placa ?hay&:(eq ?hay empty))
-        (fuente ?)
-        (grafica ?)
-        (hdd ?)
-        (procesador ?)
-        (ram ?)
-        (marca ?))
+        (conexion ?conexion_placa)
+        (memoria ?mem_placa)
+        )    
+    (componente
+        (marca ?)
+        (nombre ?nom_cpu)
+        (precio ?precio_cpu)
+        (tipo cpu)
+        (conexion ?conexion_placa)
+        ) 
+    (componente
+        (marca ?)
+        (nombre ?nom_gpu)
+        (precio ?precio_gpu)
+        (tipo gpu)
+        (conexion ?conexion_gpu)
+        ) 
+    (componente
+        (marca ?)
+        (nombre ?nom_mem)
+        (precio ?precio_mem)
+        (tipo ram)
+        (memoria ?mem_mem &:(<= mem_mem mem_placa))
+        )
+    (componente
+        (marca ?)
+        (nombre ?nom_fuente)
+        (precio ?precio_fuente)
+        (tipo fuente)
+        
+        ) 
+    (componente
+        (marca ?)
+        (nombre ?nom_hdd)
+        (precio ?precio_hdd)
+        (tipo hdd)
+        
+        ) 
     (user 
-        (dinero ?pres&:(>= ?pres (+ ?precio  ?acum)))
+        (dinero ?pres&:(>= ?pres (+ ?precio_placa  ?precio_cpu ?precio_gpu ?precio_mem ?precio_fuente ?precio_hdd)))
         (jugar ?)
         (nombre ?)
         (portatil ?)
@@ -115,8 +139,17 @@
         (so ?)
      )
         =>
-    (printout t "No se ha podido encontrar una solucion para su problema, vaya al medico" crlf)
-    (modify ?p1 (placa ?nom)(precio (+ ?acum  ?precio)))
+	   (assert 
+	        (equipo
+	            (fuente ?nom_fuente)
+	            (grafica ?nom_gpu)
+	            (hdd ?nom_hdd)
+	            (placa ?nom_placa)
+	            (precio (+ ?precio_placa  ?precio_cpu ?precio_gpu ?precio_mem ?precio_fuente ?precio_hdd))
+	            (procesador ?nom_cpu)
+	            (ram ?nom_mem)
+	      	)
+        )
     )
 
 (reset)
