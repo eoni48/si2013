@@ -2,12 +2,12 @@
 (deftemplate user
     (slot nombre)
     (slot dinero(type NUMBER))
-    (slot duracion)
+    (slot duracion(type NUMBER))
     (slot juego)
     )
 (deftemplate Tabla-juegos-gama
     (slot nombre-juego)
-    (slot gama-juego)
+    (slot gama-juego(type NUMBER))
     )
 
 (deftemplate componente
@@ -32,16 +32,16 @@
     )
 (deffacts inicio
     ;(user(nombre pepito)(dinero 3000)(so win)(portatil no)(potencia alta)(renovable no)(jugar si))
-    (user(nombre grillo)(dinero 1200)(duracion 2)(juego bf3))
+    (user(nombre grillo)(dinero 2100)(duracion 5)(juego crysis3))
     ;(user(nombre gepeto)(dinero 1200)(so win)(portatil no)(potencia media)(renovable si)(jugar si))
     ;(user(nombre koyi)(dinero 6000)(so win)(portatil si)(potencia alta)(renovable si)(jugar si))
     ;(user(nombre dolar)(dinero 6000)(so win)(portatil no)(potencia alta)(renovable si)(jugar si))
     
-    (Tabla-juegos-gama (nombre-juego bf3)(gama-juego alta))
-    (Tabla-juegos-gama (nombre-juego sims)(gama-juego baja))
-    (Tabla-juegos-gama (nombre-juego crysis3)(gama-juego extreme))
-    (Tabla-juegos-gama (nombre-juego batman)(gama-juego media))
-    (Tabla-juegos-gama (nombre-juego dota2)(gama-juego baja))
+    (Tabla-juegos-gama (nombre-juego bf3)(gama-juego 8))
+    (Tabla-juegos-gama (nombre-juego sims)(gama-juego 1))
+    (Tabla-juegos-gama (nombre-juego crysis3)(gama-juego 10))
+    (Tabla-juegos-gama (nombre-juego batman)(gama-juego 5))
+    (Tabla-juegos-gama (nombre-juego dota2)(gama-juego 1))
    	
     ;amd
     (componente(marca asus)(nombre asus-sabertooth)(precio 168)(tipo placa) (conexion amd3p) (memoria 32))
@@ -62,15 +62,15 @@
     
     ;gpu
     ;ati
-    (componente(marca ati)(nombre ati-7970x2)(precio 1380)(tipo gpu) (conexion pcie3) (gama-juego extreme))
-    (componente(marca ati)(nombre ati-7970)(precio 434)(tipo gpu) (conexion pcie3) (gama-juego alta))
-    (componente(marca ati)(nombre ati-7950)(precio 314)(tipo gpu) (conexion pcie3) (gama-juego media))
-    (componente(marca ati)(nombre ati7870)(precio 249)(tipo gpu) (conexion pcie3) (gama-juego media))
+    (componente(marca ati)(nombre ati-7970x2)(precio 1380)(tipo gpu) (conexion pcie3) (gama-juego 10))
+    (componente(marca ati)(nombre ati-7970)(precio 434)(tipo gpu) (conexion pcie3) (gama-juego 8))
+    (componente(marca ati)(nombre ati-7950)(precio 314)(tipo gpu) (conexion pcie3) (gama-juego 5))
+    (componente(marca ati)(nombre ati7870)(precio 249)(tipo gpu) (conexion pcie3) (gama-juego 5))
     ;nvidia
-    (componente(marca nvidia)(nombre nvidia-680)(precio 529)(tipo gpu) (conexion pcie3) (gama-juego alta))
-    (componente(marca nvidia)(nombre nvidia-670)(precio 369)(tipo gpu) (conexion pcie3) (gama-juego alta))
-    (componente(marca nvidia)(nombre nvidia-660)(precio 205)(tipo gpu) (conexion pcie3) (gama-juego media))
-    (componente(marca nvidia)(nombre nvidia-650)(precio 147)(tipo gpu) (conexion pcie3) (gama-juego baja))
+    (componente(marca nvidia)(nombre nvidia-680)(precio 529)(tipo gpu) (conexion pcie3) (gama-juego 8))
+    (componente(marca nvidia)(nombre nvidia-670)(precio 369)(tipo gpu) (conexion pcie3) (gama-juego 8))
+    (componente(marca nvidia)(nombre nvidia-660)(precio 205)(tipo gpu) (conexion pcie3) (gama-juego 5))
+    (componente(marca nvidia)(nombre nvidia-650)(precio 147)(tipo gpu) (conexion pcie3) (gama-juego 1))
     
     ;ram
     (componente(marca kingston)(nombre hyperx-16)(precio 133)(tipo ram) (conexion ddr3) (memoria 16))
@@ -123,7 +123,7 @@
     (assert (conexion amd3p))
     )
 
-(defrule r-conexion
+(defrule r-conexion2
     (marca todas)
     =>
     (assert (conexion indiferente))
@@ -131,10 +131,9 @@
 
 (defrule add-equipo
 
-    ;?variable <- (tipo (trozodetemplate))
  	(conexion ?conexion_placa)
     (test (neq ?conexion_placa indiferente))
-    (gama-juego ?gama-juego)
+    (gama-juego ?gama)
     
     (componente
         (marca ?)
@@ -159,12 +158,14 @@
         (conexion ?conexion_gpu)
         (gama-juego ?gama-juego)
         ) 
+    (test (>= ?gama-juego ?gama))
+    
     (componente
         (marca ?)
         (nombre ?nom_mem)
         (precio ?precio_mem)
         (tipo ram)
-        (memoria ?mem_mem &:(<= mem_mem mem_placa))
+        (memoria ?mem_mem &:(<= ?mem_mem ?mem_placa))
         )
     (componente
         (marca ?)
@@ -201,9 +202,8 @@
 
 (defrule add-equipo2
 
-    ;?variable <- (tipo (trozodetemplate))
  	(conexion indiferente)
-    (gama-juego ?gama-juego)
+    (gama-juego ?gama)
     
     (componente
         (marca ?)
@@ -228,12 +228,14 @@
         (conexion ?conexion_gpu)
         (gama-juego ?gama-juego)
         ) 
+    (test (>= ?gama-juego ?gama))
+    
     (componente
         (marca ?)
         (nombre ?nom_mem)
         (precio ?precio_mem)
         (tipo ram)
-        (memoria ?mem_mem &:(<= mem_mem mem_placa))
+        (memoria ?mem_mem &:(<= ?mem_mem ?mem_placa))
         )
     (componente
         (marca ?)
