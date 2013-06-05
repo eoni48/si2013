@@ -1,4 +1,4 @@
-% Author: Luis Valero Martín , Óscar Crespo Salazar
+% Author: Luis Valero Martï¿½n , ï¿½scar Crespo Salazar
 % Date: 03/04/2013
 %
 dd(juan, maria, rosa, m).
