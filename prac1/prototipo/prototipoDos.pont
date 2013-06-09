@@ -1,4 +1,4 @@
-; Sun Jun 09 13:34:29 CEST 2013
+; Sun Jun 09 13:44:48 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -63,13 +63,13 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot %3ADEFINITION-NAME
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot dram
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION-NAME
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot placa
 		(type INSTANCE)
@@ -101,11 +101,11 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot modelo
+	(single-slot conexion_socket
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot conexion_socket
+	(single-slot modelo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -148,24 +148,24 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot tipo_componente
-		(type SYMBOL)
-		(allowed-values Almacenamiento Fuente PlacaBase Procesador Ram TarjetaGrafica)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot gpu
 		(type INSTANCE)
 ;+		(allowed-classes TarjetaGrafica)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot preg_dis
+	(single-slot tipo_componente
 		(type SYMBOL)
-		(allowed-values no poco normal mucho)
-;+		(cardinality 0 1)
+		(allowed-values Almacenamiento Fuente PlacaBase Procesador Ram TarjetaGrafica)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot conexion_grafica
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot preg_dis
+		(type SYMBOL)
+		(allowed-values no poco normal mucho)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
 		(type STRING)
@@ -368,7 +368,7 @@
 (defclass PlacaBase
 	(is-a Componente)
 	(role concrete)
-	(single-slot conexion_socket
+	(single-slot conexion_grafica
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -376,7 +376,7 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot conexion_grafica
+	(single-slot conexion_socket
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -419,15 +419,15 @@
 		(default 0)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot gpu
-		(type INSTANCE)
-;+		(allowed-classes TarjetaGrafica)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot slots_usados
 		(type INTEGER)
 		(default 0)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot gpu
+		(type INSTANCE)
+;+		(allowed-classes TarjetaGrafica)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot placa
 		(type INSTANCE)
@@ -444,23 +444,23 @@
 ;+		(allowed-classes Ram)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot slots_libres
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot fuente
 		(type INSTANCE)
 ;+		(allowed-classes Fuente)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot slots_libres
-		(type INTEGER)
+	(single-slot hdd
+		(type INSTANCE)
+;+		(allowed-classes Almacenamiento)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot precio_total
 		(type FLOAT)
 		(default 0.0)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot hdd
-		(type INSTANCE)
-;+		(allowed-classes Almacenamiento)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -498,12 +498,12 @@
 		(allowed-values multimedia disenador gamer)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot presupuesto
-		(type FLOAT)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot nombre
 		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot presupuesto
+		(type FLOAT)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot preg_juega
