@@ -1,10 +1,23 @@
-; Sun Jun 09 18:47:51 CEST 2013
+; Sun Jun 09 19:02:20 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
 ([Jess+engine] of  %3AJESS-ENGINE
 )
+
+([prototipoDos_Class10028] of  Equipo
+
+	(cpu [prototipoDos_Class22])
+	(fuente [prototipoDos_Class15])
+	(gpu [prototipoDos_Class26])
+	(hdd [prototipoDos_Class5])
+	(mem 16)
+	(placa [prototipoDos_Class20])
+	(precio_total 1335.68)
+	(ram [prototipoDos_Class23])
+	(slots_libres 0)
+	(slots_usados 4))
 
 ([prototipoDos_Class11] of  %3APAL-CONSTRAINT
 
@@ -119,6 +132,7 @@
 
 ([prototipoDos_Class3] of  Usuario
 
+	(equipo [prototipoDos_Class10028])
 	(nombre "Pepe")
 	(preg_dis no)
 	(preg_juega mucho)

@@ -1,4 +1,4 @@
-; Sun Jun 09 18:47:51 CEST 2013
+; Sun Jun 09 19:02:21 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,21 +20,21 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[prototipoDos_ProjectKB_Class20141]
-		[prototipoDos_ProjectKB_Class20142]
-		[prototipoDos_ProjectKB_Class20143]
-		[prototipoDos_ProjectKB_Class20144]
-		[prototipoDos_ProjectKB_Class20145]
-		[prototipoDos_ProjectKB_Class20146]
-		[prototipoDos_ProjectKB_Class20147]
-		[prototipoDos_ProjectKB_Class20148]
-		[prototipoDos_ProjectKB_Class20149]
-		[prototipoDos_ProjectKB_Class20150]
-		[prototipoDos_ProjectKB_Class20151]
-		[prototipoDos_ProjectKB_Class20152]
-		[prototipoDos_ProjectKB_Class20153]
-		[prototipoDos_ProjectKB_Class20154]
-		[prototipoDos_ProjectKB_Class20155]))
+		[prototipoDos_ProjectKB_Class10042]
+		[prototipoDos_ProjectKB_Class10043]
+		[prototipoDos_ProjectKB_Class10044]
+		[prototipoDos_ProjectKB_Class10045]
+		[prototipoDos_ProjectKB_Class10046]
+		[prototipoDos_ProjectKB_Class10047]
+		[prototipoDos_ProjectKB_Class10048]
+		[prototipoDos_ProjectKB_Class10049]
+		[prototipoDos_ProjectKB_Class10050]
+		[prototipoDos_ProjectKB_Class10051]
+		[prototipoDos_ProjectKB_Class10052]
+		[prototipoDos_ProjectKB_Class10053]
+		[prototipoDos_ProjectKB_Class10054]
+		[prototipoDos_ProjectKB_Class10055]
+		[prototipoDos_ProjectKB_Class10056]))
 
 ([CLSES_TAB] of  Widget
 
@@ -86,10 +86,10 @@
 ([KB_103229_Class1] of  Map
 
 	(entries
-		[prototipoDos_ProjectKB_Class20156]
-		[prototipoDos_ProjectKB_Class20157]
-		[prototipoDos_ProjectKB_Class20158]
-		[prototipoDos_ProjectKB_Class20159]))
+		[prototipoDos_ProjectKB_Class10057]
+		[prototipoDos_ProjectKB_Class10058]
+		[prototipoDos_ProjectKB_Class10059]
+		[prototipoDos_ProjectKB_Class10060]))
 
 ([KB_103229_Class100] of  Property_List
 )
@@ -183,7 +183,7 @@
 ([KB_103229_Class99] of  Property_List
 )
 
-([KB_716751_Class4] of  Map
+([KB_798566_Class4] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -366,6 +366,109 @@
 
 ([prototipoDos_ProjectKB_Class10006] of  Property_List
 )
+
+([prototipoDos_ProjectKB_Class10042] of  String
+
+	(name "Usuario")
+	(string_value "nombre"))
+
+([prototipoDos_ProjectKB_Class10043] of  String
+
+	(name ":FUNCTION")
+	(string_value "%3ADEFINITION-NAME"))
+
+([prototipoDos_ProjectKB_Class10044] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([prototipoDos_ProjectKB_Class10045] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([prototipoDos_ProjectKB_Class10046] of  String
+
+	(name "Marca")
+	(string_value "nombre"))
+
+([prototipoDos_ProjectKB_Class10047] of  String
+
+	(name ":JESS-DEFINITION")
+	(string_value "%3ADEFINITION-NAME"))
+
+([prototipoDos_ProjectKB_Class10048] of  String
+
+	(name "Fuente")
+	(string_value "modelo"))
+
+([prototipoDos_ProjectKB_Class10049] of  String
+
+	(name "Procesador")
+	(string_value "modelo"))
+
+([prototipoDos_ProjectKB_Class10050] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([prototipoDos_ProjectKB_Class10051] of  String
+
+	(name "PlacaBase")
+	(string_value "modelo"))
+
+([prototipoDos_ProjectKB_Class10052] of  String
+
+	(name "Equipo")
+	(string_value "precio_total"))
+
+([prototipoDos_ProjectKB_Class10053] of  String
+
+	(name "Almacenamiento")
+	(string_value "tipo_almacenamiento"))
+
+([prototipoDos_ProjectKB_Class10054] of  String
+
+	(name ":RULE")
+	(string_value "%3ADEFINITION-NAME"))
+
+([prototipoDos_ProjectKB_Class10055] of  String
+
+	(name "TarjetaGrafica")
+	(string_value "modelo"))
+
+([prototipoDos_ProjectKB_Class10056] of  String
+
+	(name "Ram")
+	(string_value "modelo"))
+
+([prototipoDos_ProjectKB_Class10057] of  Map_Entry
+
+	(key "collab.hide.archived")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([prototipoDos_ProjectKB_Class10058] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([prototipoDos_ProjectKB_Class10059] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([prototipoDos_ProjectKB_Class10060] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([prototipoDos_ProjectKB_Class10105] of  Property_List
 
@@ -1072,109 +1175,6 @@
 
 ([prototipoDos_ProjectKB_Class20] of  Property_List
 )
-
-([prototipoDos_ProjectKB_Class20141] of  String
-
-	(name "Usuario")
-	(string_value "nombre"))
-
-([prototipoDos_ProjectKB_Class20142] of  String
-
-	(name ":FUNCTION")
-	(string_value "%3ADEFINITION-NAME"))
-
-([prototipoDos_ProjectKB_Class20143] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([prototipoDos_ProjectKB_Class20144] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([prototipoDos_ProjectKB_Class20145] of  String
-
-	(name "Marca")
-	(string_value "nombre"))
-
-([prototipoDos_ProjectKB_Class20146] of  String
-
-	(name ":JESS-DEFINITION")
-	(string_value "%3ADEFINITION-NAME"))
-
-([prototipoDos_ProjectKB_Class20147] of  String
-
-	(name "Fuente")
-	(string_value "modelo"))
-
-([prototipoDos_ProjectKB_Class20148] of  String
-
-	(name "Procesador")
-	(string_value "modelo"))
-
-([prototipoDos_ProjectKB_Class20149] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([prototipoDos_ProjectKB_Class20150] of  String
-
-	(name "PlacaBase")
-	(string_value "modelo"))
-
-([prototipoDos_ProjectKB_Class20151] of  String
-
-	(name "Equipo")
-	(string_value "precio_total"))
-
-([prototipoDos_ProjectKB_Class20152] of  String
-
-	(name "Almacenamiento")
-	(string_value "tipo_almacenamiento"))
-
-([prototipoDos_ProjectKB_Class20153] of  String
-
-	(name ":RULE")
-	(string_value "%3ADEFINITION-NAME"))
-
-([prototipoDos_ProjectKB_Class20154] of  String
-
-	(name "TarjetaGrafica")
-	(string_value "modelo"))
-
-([prototipoDos_ProjectKB_Class20155] of  String
-
-	(name "Ram")
-	(string_value "modelo"))
-
-([prototipoDos_ProjectKB_Class20156] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([prototipoDos_ProjectKB_Class20157] of  Map_Entry
-
-	(key "collab.hide.archived")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([prototipoDos_ProjectKB_Class20158] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([prototipoDos_ProjectKB_Class20159] of  Map_Entry
-
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
 
 ([prototipoDos_ProjectKB_Class20285] of  Widget
 
