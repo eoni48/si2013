@@ -306,8 +306,8 @@
 (defrule MAIN::r-opt-cpu 
    ?h1 <- (pres sobra) 
    ?us <- (object (is-a Usuario) (tipo_usuario gamer) (presupuesto ?pres)) 
-   ?eq <- (object (is-a Equipo) (placa ?p) (cpu ?c) (precio_total ?precio)) 
-   (object (OBJECT ?c) (precio ?precioCPU2) (conexion_socket ?c1)) 
+   ?eq <- (object (is-a Equipo) (placa ?p) (cpu ?cp) (precio_total ?precio)) 
+   (object (OBJECT ?cp) (precio ?precioCPU2) (conexion_socket ?c1)) 
    (object (OBJECT ?p) (precio ?precioP2) (conexion_hdd ?ch) (conexion_socket ?c1) (conexion_ram ?cr) (conexion_grafica ?cg) (slots ?slots2) (max_ram ?maxr2)) 
    (and ?cpu <- (object (is-a Procesador) (precio ?precioCPU) (conexion_socket ?c) (cores ?cores)) 
         (test (> ?cores 3)) 
