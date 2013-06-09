@@ -1,0 +1,225 @@
+; Sun Jun 09 13:34:29 CEST 2013
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([Jess+engine] of  %3AJESS-ENGINE
+)
+
+([prototipoDos_Class10025] of  Equipo
+
+	(cpu [prototipoDos_Class21])
+	(fuente [prototipoDos_Class15])
+	(gpu [prototipoDos_Class25])
+	(hdd [prototipoDos_Class6])
+	(mem 16)
+	(placa [prototipoDos_Class19])
+	(precio_total 1045.48)
+	(ram [prototipoDos_Class23])
+	(slots_libres 0)
+	(slots_usados 4))
+
+([prototipoDos_Class11] of  %3APAL-CONSTRAINT
+
+	(%3APAL-NAME "SeasonicG-650"))
+
+([prototipoDos_Class12] of  %3APAL-CONSTRAINT
+)
+
+([prototipoDos_Class13] of  %3APAL-CONSTRAINT
+)
+
+([prototipoDos_Class14] of  %3APAL-CONSTRAINT
+)
+
+([prototipoDos_Class15] of  Fuente
+
+	(marca [prototipoDos_Class30])
+	(modelo "G-650")
+	(potencia 650)
+	(precio 124.9)
+	(tipo_componente Fuente))
+
+([prototipoDos_Class16] of  Fuente
+
+	(marca [prototipoDos_Class32])
+	(modelo "HCG-620M")
+	(potencia 620)
+	(precio 86.9)
+	(tipo_componente Fuente))
+
+([prototipoDos_Class19] of  PlacaBase
+
+	(conexion_grafica "Pcie")
+	(conexion_hdd "Sata")
+	(conexion_ram "DDR3")
+	(conexion_socket "AMD3+")
+	(marca [prototipoDos_Class35])
+	(max_ram 32)
+	(modelo "Crosshair V Formula-Z")
+	(precio 219.9)
+	(slots 4)
+	(tipo_componente PlacaBase))
+
+([prototipoDos_Class20] of  PlacaBase
+
+	(conexion_grafica "Pcie")
+	(conexion_hdd "Sata")
+	(conexion_ram "DDR3")
+	(conexion_socket "2011")
+	(marca [prototipoDos_Class35])
+	(max_ram 64)
+	(modelo "P9X79")
+	(precio 239.9)
+	(slots 8)
+	(tipo_componente PlacaBase))
+
+([prototipoDos_Class21] of  Procesador
+
+	(conexion_socket "AMD3+")
+	(cores 8)
+	(frecuencia 4.0)
+	(marca [prototipoDos_Class36])
+	(modelo "8350")
+	(precio 182.9)
+	(tipo_componente Procesador))
+
+([prototipoDos_Class22] of  Procesador
+
+	(conexion_socket "2011")
+	(cores 4)
+	(frecuencia 3.6)
+	(marca [prototipoDos_Class37])
+	(modelo "i7-3820")
+	(precio 289.0)
+	(tipo_componente Procesador))
+
+([prototipoDos_Class23] of  Ram
+
+	(conexion_ram "DDR3")
+	(dram 4)
+	(marca [prototipoDos_Class38])
+	(modelo "4DDR3-1600MHz")
+	(precio 28.22)
+	(tipo_componente Ram))
+
+([prototipoDos_Class24] of  Ram
+
+	(conexion_ram "DDR3")
+	(dram 8)
+	(marca [prototipoDos_Class38])
+	(modelo "8DDR3-1600MHz")
+	(precio 76.0)
+	(tipo_componente Ram))
+
+([prototipoDos_Class25] of  TarjetaGrafica
+
+	(conexion_grafica "Pcie")
+	(marca [prototipoDos_Class31])
+	(modelo "Radeon HD 7870")
+	(precio 204.9)
+	(tipo_componente TarjetaGrafica)
+	(vram 2))
+
+([prototipoDos_Class26] of  TarjetaGrafica
+
+	(conexion_grafica "Pcie")
+	(marca [prototipoDos_Class39])
+	(modelo "GeForce GTX 670")
+	(precio 384.0)
+	(tipo_componente TarjetaGrafica)
+	(vram 2))
+
+([prototipoDos_Class3] of  Usuario
+
+	(nombre "Pepe")
+	(preg_dis no)
+	(preg_juega mucho)
+	(presupuesto 2000.0)
+	(tipo_usuario multimedia))
+
+([prototipoDos_Class30] of  Marca
+
+	(Componentes Fuente)
+	(fabrica [prototipoDos_Class15])
+	(nombre "Seasonic"))
+
+([prototipoDos_Class31] of  Marca
+
+	(Componentes TarjetaGrafica)
+	(fabrica [prototipoDos_Class25])
+	(nombre "Sapphire"))
+
+([prototipoDos_Class32] of  Marca
+
+	(Componentes Fuente)
+	(fabrica [prototipoDos_Class16])
+	(nombre "Antec"))
+
+([prototipoDos_Class33] of  Marca
+
+	(Componentes Almacenamiento)
+	(fabrica [prototipoDos_Class5])
+	(nombre "Seagate"))
+
+([prototipoDos_Class34] of  Marca
+
+	(Componentes Almacenamiento)
+	(fabrica [prototipoDos_Class6])
+	(nombre "Crucial"))
+
+([prototipoDos_Class35] of  Marca
+
+	(Componentes PlacaBase)
+	(fabrica
+		[prototipoDos_Class20]
+		[prototipoDos_Class19])
+	(nombre "Asus"))
+
+([prototipoDos_Class36] of  Marca
+
+	(Componentes Procesador)
+	(fabrica [prototipoDos_Class21])
+	(nombre "Amd"))
+
+([prototipoDos_Class37] of  Marca
+
+	(Componentes
+		Almacenamiento
+		Procesador)
+	(fabrica [prototipoDos_Class22])
+	(nombre "Intel"))
+
+([prototipoDos_Class38] of  Marca
+
+	(Componentes Ram)
+	(fabrica
+		[prototipoDos_Class23]
+		[prototipoDos_Class24])
+	(nombre "Kingston"))
+
+([prototipoDos_Class39] of  Marca
+
+	(Componentes TarjetaGrafica)
+	(fabrica [prototipoDos_Class26])
+	(nombre "Zotac"))
+
+([prototipoDos_Class5] of  Almacenamiento
+
+	(capacidad 3000)
+	(conexion_hdd "Sata")
+	(marca [prototipoDos_Class33])
+	(modelo "Barracuda3")
+	(precio 185.0)
+	(tipo_almacenamiento HDD)
+	(tipo_componente Almacenamiento))
+
+([prototipoDos_Class6] of  Almacenamiento
+
+	(capacidad 256)
+	(conexion_hdd "Sata")
+	(marca [prototipoDos_Class34])
+	(modelo "M4")
+	(precio 200.0)
+	(tipo_almacenamiento SSD)
+	(tipo_componente Almacenamiento))

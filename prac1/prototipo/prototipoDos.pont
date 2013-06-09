@@ -1,0 +1,513 @@
+; Sun Jun 09 13:34:29 CEST 2013
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot slots_usados
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot potencia
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot fuente
+		(type INSTANCE)
+;+		(allowed-classes Fuente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot preg_juega
+		(type SYMBOL)
+		(allowed-values no poco normal mucho)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipo_usuario
+		(type SYMBOL)
+		(allowed-values multimedia disenador gamer)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hdd
+		(type INSTANCE)
+;+		(allowed-classes Almacenamiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot precio
+		(type FLOAT)
+		(range 0.0 %3FVARIABLE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot cores
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot equipo
+		(type INSTANCE)
+;+		(allowed-classes Equipo)
+		(create-accessor read-write))
+	(single-slot ram
+		(type INSTANCE)
+;+		(allowed-classes Ram)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_almacenamiento
+		(type SYMBOL)
+		(allowed-values SSD HDD)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot vram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION-NAME
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot placa
+		(type INSTANCE)
+;+		(allowed-classes PlacaBase)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot marca
+		(type INSTANCE)
+;+		(allowed-classes Marca)
+;+		(cardinality 1 1)
+;+		(inverse-slot fabrica)
+		(create-accessor read-write))
+	(single-slot %3AKB-SAVE
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot fabrica
+		(type INSTANCE)
+;+		(allowed-classes Componente)
+;+		(inverse-slot marca)
+		(create-accessor read-write))
+	(single-slot frecuencia
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot capacidad
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot modelo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_socket
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot presupuesto
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot slots_libres
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ASTARTUP-FILE
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ASTARTUP-EXPRESSION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot Componentes
+		(type SYMBOL)
+;+		(allowed-parents Componente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot cpu
+		(type INSTANCE)
+;+		(allowed-classes Procesador)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot conexion_hdd
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot slots
+		(type INTEGER)
+		(range 1 %3FVARIABLE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_componente
+		(type SYMBOL)
+		(allowed-values Almacenamiento Fuente PlacaBase Procesador Ram TarjetaGrafica)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot gpu
+		(type INSTANCE)
+;+		(allowed-classes TarjetaGrafica)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot preg_dis
+		(type SYMBOL)
+		(allowed-values no poco normal mucho)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot conexion_grafica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot max_ram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot precio_total
+		(type FLOAT)
+		(default 0.0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot mem
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_ram
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-ENGINE
+	(is-a %3ASYSTEM-CLASS)
+	(role concrete)
+	(single-slot %3ASTARTUP-FILE
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ASTARTUP-EXPRESSION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-DEFINITION
+	(is-a %3ASYSTEM-CLASS)
+	(role abstract)
+	(single-slot %3ADEFINITION-NAME
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3AKB-SAVE
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-DEFGLOBAL
+	(is-a %3AJESS-DEFINITION)
+	(role concrete))
+
+(defclass %3AJESS-DEFTEMPLATE
+	(is-a %3AJESS-DEFINITION)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-DEFFACTS
+	(is-a %3AJESS-DEFINITION)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-DEFMESSAGE-HANDLER
+	(is-a %3AJESS-DEFINITION)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-DEFMETHOD
+	(is-a %3AJESS-DEFINITION)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass %3ARULE
+	(is-a %3ASYSTEM-CLASS)
+	(role abstract)
+	(single-slot %3ADEFINITION-NAME
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-RULE
+	(is-a %3AJESS-DEFINITION %3ARULE)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass %3AFUNCTION
+	(is-a %3ASYSTEM-CLASS)
+	(role abstract)
+	(single-slot %3ADEFINITION-NAME
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot %3ADEFINITION
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass %3AJESS-FUNCTION
+	(is-a %3AFUNCTION %3AJESS-DEFINITION)
+	(role concrete)
+	(multislot %3ADOCUMENTATION
+		(type STRING)
+		(create-accessor read-write)))
+
+(defclass Main
+	(is-a USER)
+	(role abstract))
+
+(defclass Componente
+	(is-a Main)
+	(role abstract)
+	(single-slot precio
+		(type FLOAT)
+		(range 0.0 %3FVARIABLE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipo_componente
+		(type SYMBOL)
+		(allowed-values Almacenamiento Fuente PlacaBase Procesador Ram TarjetaGrafica)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot modelo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot marca
+		(type INSTANCE)
+;+		(allowed-classes Marca)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Fuente
+	(is-a Componente)
+	(role concrete)
+	(single-slot potencia
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Procesador
+	(is-a Componente)
+	(role concrete)
+	(single-slot cores
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_socket
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot frecuencia
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Ram
+	(is-a Componente)
+	(role concrete)
+	(single-slot dram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_ram
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass TarjetaGrafica
+	(is-a Componente)
+	(role concrete)
+	(single-slot conexion_grafica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot vram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass PlacaBase
+	(is-a Componente)
+	(role concrete)
+	(single-slot conexion_socket
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_ram
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_grafica
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_hdd
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot slots
+		(type INTEGER)
+		(range 1 %3FVARIABLE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot max_ram
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Almacenamiento
+	(is-a Componente)
+	(role concrete)
+	(single-slot capacidad
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot conexion_hdd
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot tipo_almacenamiento
+		(type SYMBOL)
+		(allowed-values SSD HDD)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Equipo
+	(is-a Main)
+	(role concrete)
+	(single-slot mem
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot gpu
+		(type INSTANCE)
+;+		(allowed-classes TarjetaGrafica)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot slots_usados
+		(type INTEGER)
+		(default 0)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot placa
+		(type INSTANCE)
+;+		(allowed-classes PlacaBase)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot cpu
+		(type INSTANCE)
+;+		(allowed-classes Procesador)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ram
+		(type INSTANCE)
+;+		(allowed-classes Ram)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot fuente
+		(type INSTANCE)
+;+		(allowed-classes Fuente)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot slots_libres
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot precio_total
+		(type FLOAT)
+		(default 0.0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hdd
+		(type INSTANCE)
+;+		(allowed-classes Almacenamiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Marca
+	(is-a Main)
+	(role concrete)
+	(multislot Componentes
+		(type SYMBOL)
+;+		(allowed-parents Componente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot fabrica
+		(type INSTANCE)
+;+		(allowed-classes Componente)
+		(create-accessor read-write)))
+
+(defclass Usuario
+	(is-a Main)
+	(role concrete)
+	(multislot equipo
+		(type INSTANCE)
+;+		(allowed-classes Equipo)
+		(create-accessor read-write))
+	(single-slot preg_dis
+		(type SYMBOL)
+		(allowed-values no poco normal mucho)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_usuario
+		(type SYMBOL)
+		(allowed-values multimedia disenador gamer)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot presupuesto
+		(type FLOAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot preg_juega
+		(type SYMBOL)
+		(allowed-values no poco normal mucho)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
