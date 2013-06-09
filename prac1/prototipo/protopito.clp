@@ -28,6 +28,7 @@
    (and ?cpu <- (object (is-a Procesador) (precio ?precioCPU) (cores ?cores)) 
         (test (> ?cores 3))) 
    => 
+   (printout t "min cpu" crlf)
    (slot-set ?eq cpu ?cpu) 
    (slot-set ?eq precio_total (+ ?precio ?precioCPU)) 
    (assert (MAIN::socket (slot-get ?cpu conexion_socket))))
@@ -39,6 +40,7 @@
    (and ?us <- (object (is-a Usuario) (presupuesto ?pres)) 
         (test (> ?pres ?precio))) 
    => 
+   (printout t "sobra" crlf)
    (assert (MAIN::pres sobra)))
 
 (defrule MAIN::r-falta-pres 
@@ -48,6 +50,7 @@
    (and ?us <- (object (is-a Usuario) (presupuesto ?pres)) 
         (test (< ?pres ?precio))) 
    => 
+   (printout t "falta" crlf)
    (assert (MAIN::pres falta)))
 
 (defrule MAIN::r-bajar-fuente 
@@ -56,6 +59,7 @@
    (and ?fuente <- (object (is-a Fuente) (precio ?precioF)) 
         (test (< ?precioF (slot-get ?f precio)))) 
    => 
+   (printout t "bajar fuente" crlf)
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq fuente ?fuente) 
@@ -70,6 +74,7 @@
         (test (< ?precioGPU (slot-get ?g precio))) 
         (test (eq ?c (slot-get ?p conexion_grafica)))) 
    => 
+   (printout t "bajar gpu" crlf)
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq gpu ?gpu) 
@@ -122,6 +127,7 @@
         (test (eq ?c (slot-get ?p conexion_ram))) 
         (test (<= (+ (- ?precio (* (slot-get ?r precio) ?usados)) (* ?usados ?precioR)) ?pres))) 
    => 
+   (printout t "opt ram" crlf)
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq ram ?ram) 
@@ -171,6 +177,7 @@
         (test (>= ?ram 2)) 
         (test (eq ?c (slot-get ?p conexion_grafica)))) 
    => 
+   (printout t "min gpu" crlf)
    (slot-set ?eq gpu ?gpu) 
    (slot-set ?eq precio_total (+ ?precio ?precioGPU)))
 
@@ -183,6 +190,7 @@
         (test (< ?precioHDD (slot-get ?h precio))) 
         (test (eq ?c (slot-get ?p conexion_hdd)))) 
    => 
+   (printout t "bajar hdd" crlf)
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq hdd ?hdd) 
@@ -199,6 +207,7 @@
         (test (> ?precioGPU ?precioG2)) 
         (test (<= (+ ?precio (- ?precioGPU ?precioG2)) ?pres))) 
    => 
+   (printout t "opt gpu" crlf)
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq precio_total (+ ?precio (- ?precioGPU ?precioG2))) 
@@ -250,7 +259,7 @@
         (test (eq ?c (slot-get ?p conexion_ram))) 
         (test (< ?precioR (slot-get ?ram precio)))) 
    => 
-   (printout t "bajar-ram" crlf) 
+   (printout t "bajar-tipo-ram" crlf) 
    (retract ?h1) 
    (assert (MAIN::pres no)) 
    (slot-set ?eq mem ?memr) 
@@ -293,3 +302,25 @@
         (test (> ?precio ?pres))) 
    => 
    (printout t "No se ha encontrado un equipo con su presupuesto" crlf))
+
+(defrule MAIN::r-opt-cpu 
+   ?h1 <- (pres sobra) 
+   ?us <- (object (is-a Usuario) (tipo_usuario gamer) (presupuesto ?pres)) 
+   ?eq <- (object (is-a Equipo) (placa ?p) (cpu ?c) (precio_total ?precio)) 
+   (object (OBJECT ?c) (precio ?precioCPU2) (conexion_socket ?c1)) 
+   (object (OBJECT ?p) (precio ?precioP2) (conexion_hdd ?ch) (conexion_socket ?c1) (conexion_ram ?cr) (conexion_grafica ?cg) (slots ?slots2) (max_ram ?maxr2)) 
+   (and ?cpu <- (object (is-a Procesador) (precio ?precioCPU) (conexion_socket ?c) (cores ?cores)) 
+        (test (> ?cores 3)) 
+        (test (> ?precioCPU ?precioCPU2))) 
+   (and ?placa <- (object (is-a PlacaBase) (precio ?precioP) (conexion_hdd ?ch) (conexion_socket ?c) (conexion_ram ?cr) (conexion_grafica ?cg) (slots ?slots) (max_ram ?maxr)) 
+        (test (>= ?slots ?slots2)) 
+        (test (>= ?maxr ?maxr2)) 
+        (test (>= ?precioP ?precioP2)) 
+        (test (<= (+ ?precio (- ?precioCPU ?precioCPU2) (- ?precioP ?precioP2)) ?pres))) 
+   => 
+   (printout t "opt cpu" crlf) 
+   (retract ?h1) 
+   (assert (MAIN::pres no)) 
+   (slot-set ?eq precio_total (+ ?precio (- ?precioCPU ?precioCPU2) (- ?precioP ?precioP2))) 
+   (slot-set ?eq cpu ?cpu) 
+   (slot-set ?eq placa ?placa))

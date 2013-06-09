@@ -1,4 +1,4 @@
-; Sun Jun 09 18:07:52 CEST 2013
+; Sun Jun 09 18:47:51 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -123,7 +123,7 @@
 	(preg_dis no)
 	(preg_juega mucho)
 	(presupuesto 2000.0)
-	(tipo_usuario multimedia))
+	(tipo_usuario gamer))
 
 ([prototipoDos_Class30] of  Marca
 
