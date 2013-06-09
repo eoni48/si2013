@@ -276,3 +276,20 @@
    (slot-set ?eq precio_total (+ ?precio (- ?precioHDD ?precioHDD2))) 
    (slot-set ?eq hdd ?hdd))
 
+
+(defrule MAIN::r-equipo-usuario 
+   (declare (salience -1)) 
+   ?eq <- (object (is-a Equipo) (precio_total ?precio)) 
+   (and ?us <- (object (is-a Usuario) (equipo nil) (presupuesto ?pres)) 
+        (test (<= ?precio ?pres))) 
+   => 
+   (printout t "equipo encontrado" crlf) 
+   (slot-set ?us equipo ?eq))
+
+(defrule MAIN::r-no-equipo-usuario 
+   (declare (salience -1)) 
+   ?eq <- (object (is-a Equipo) (precio_total ?precio)) 
+   (and ?us <- (object (is-a Usuario) (equipo nil) (presupuesto ?pres)) 
+        (test (> ?precio ?pres))) 
+   => 
+   (printout t "No se ha encontrado un equipo con su presupuesto" crlf))

@@ -1,23 +1,10 @@
-; Sun Jun 09 13:44:48 CEST 2013
+; Sun Jun 09 18:07:52 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
 ([Jess+engine] of  %3AJESS-ENGINE
 )
-
-([prototipoDos_Class10025] of  Equipo
-
-	(cpu [prototipoDos_Class21])
-	(fuente [prototipoDos_Class15])
-	(gpu [prototipoDos_Class25])
-	(hdd [prototipoDos_Class6])
-	(mem 16)
-	(placa [prototipoDos_Class19])
-	(precio_total 1045.48)
-	(ram [prototipoDos_Class23])
-	(slots_libres 0)
-	(slots_usados 4))
 
 ([prototipoDos_Class11] of  %3APAL-CONSTRAINT
 
