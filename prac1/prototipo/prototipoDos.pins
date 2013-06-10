@@ -1,4 +1,4 @@
-; Mon Jun 10 14:16:17 CEST 2013
+; Mon Jun 10 14:35:06 CEST 2013
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -122,8 +122,7 @@
 	(nombre "Pepe")
 	(preg_dis mucho)
 	(preg_juega mucho)
-	(presupuesto 2000.0)
-	(tipo_usuario gamer))
+	(presupuesto 2000.0))
 
 ([prototipoDos_Class30] of  Marca
 

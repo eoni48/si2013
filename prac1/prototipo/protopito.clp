@@ -12,8 +12,6 @@
 (defrule MAIN::r-init-pc 
    (initial-fact) 
    (not (equipo))
-    ?us <- (object (is-a Usuario)(tipo_usuario ?tipo))
-    (test (neq ?tipo nil)) 
    => 
    (printout t "equipo" crlf) 
    (assert (MAIN::equipo hayequipo)) 
