@@ -11,7 +11,9 @@
 
 (defrule MAIN::r-init-pc 
    (initial-fact) 
-   (not (equipo)) 
+   (not (equipo))
+    ?us <- (object (is-a Usuario)(tipo_usuario ?tipo))
+    (test (neq ?tipo nil)) 
    => 
    (printout t "equipo" crlf) 
    (assert (MAIN::equipo hayequipo)) 
@@ -324,3 +326,59 @@
    (slot-set ?eq precio_total (+ ?precio (- ?precioCPU ?precioCPU2) (- ?precioP ?precioP2))) 
    (slot-set ?eq cpu ?cpu) 
    (slot-set ?eq placa ?placa))
+
+(defrule MAIN::r-tipo-dise 
+   (and ?us <- (object (is-a Usuario) (preg_dis ?dise)) 
+        (test (or (eq ?dise normal) (eq ?dise mucho)))) 
+   => 
+   (printout t "disenador" crlf) 
+   (assert (MAIN::disenador si)) 
+   (assert (MAIN::usuario disenador)))
+
+(defrule MAIN::r-tipo-gamer 
+   (and ?us <- (object (is-a Usuario) (preg_juega ?juega)) 
+        (test (or (eq ?juega normal) (eq ?juega mucho)))) 
+   => 
+   (printout t "gamer" crlf) 
+   (assert (MAIN::gamer si)) 
+   (assert (MAIN::usuario gamer)))
+
+(defrule MAIN::r-tipo-multi 
+   (and ?us <- (object (is-a Usuario) (preg_dis ?dise) (preg_juega ?juega)) 
+        (test (or (eq ?dise poco) (eq ?dise no))) 
+        (test (or (eq ?juega poco) (eq ?juega no)))) 
+   => 
+   (printout t "multi" crlf) 
+   (assert (MAIN::usuario multimedia)))
+
+(defrule MAIN::r-tipo-dise-gamer 
+   ?h1 <- (disenador si) 
+   (gamer si) 
+   ?h2 <- (usuario disenador) 
+   (and ?us <- (object (is-a Usuario) (preg_dis ?dise) (preg_juega ?juega)) 
+        (test (or (eq ?juega ?dise) (and (eq ?dise normal) (eq ?juega mucho))))) 
+   => 
+   (printout t "quita dise" crlf) 
+   (retract ?h1) 
+   (retract ?h2) 
+   (assert (MAIN::usuario gamer)))
+
+(defrule MAIN::r-tipo-gamer-dise 
+   (disenador si) 
+   ?h1 <- (gamer si) 
+   ?h2 <- (usuario gamer) 
+   (and ?us <- (object (is-a Usuario) (preg_dis ?dise) (preg_juega ?juega)) 
+        (test (eq ?dise mucho)) 
+        (test (eq ?juega normal))) 
+   => 
+   (printout t "quita juega" crlf) 
+   (retract ?h1) 
+   (retract ?h2) 
+   (assert (MAIN::usuario disenador)))
+
+(defrule MAIN::r-select-usuario
+    (declare (salience -1)) 
+   (usuario ?tipo) 
+   ?us <- (object (is-a Usuario) (tipo_usuario nil)) 
+   => 
+   (slot-set ?us tipo_usuario ?tipo))
