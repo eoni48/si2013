@@ -287,7 +287,7 @@
 
 
 (defrule MAIN::r-equipo-usuario 
-   (declare (salience -1)) 
+   (declare (salience -4)) 
    ?eq <- (object (is-a Equipo) (precio_total ?precio)) 
    (and ?us <- (object (is-a Usuario) (equipo nil) (presupuesto ?pres)) 
         (test (<= ?precio ?pres))) 
@@ -296,7 +296,7 @@
    (slot-set ?us equipo ?eq))
 
 (defrule MAIN::r-no-equipo-usuario 
-   (declare (salience -1)) 
+   (declare (salience -4)) 
    ?eq <- (object (is-a Equipo) (precio_total ?precio)) 
    (and ?us <- (object (is-a Usuario) (equipo nil) (presupuesto ?pres)) 
         (test (> ?precio ?pres))) 
